@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Music Player</title>
+    <script src="https://kit.fontawesome.com/4ff73df8f1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="music-player">
+            <nav>
+                <div class="circle">
+                    <i class="fa-solid fa-angle-left"></i>
+                </div>
+                <div class="circle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </nav>
+
+            <img src="images/Tamer Hosny.jpg" alt="song-img">
+            <h1>Tamer Hosny</h1>
+            <p>Sawahna</p>
+
+            <audio id="song">
+                <source src="Media/sawahna.mp3" type="audio/mpeg">
+            </audio>
+
+            <input type="range" name="progress" id="progress" min="0" max="100" value="0">
+
+            <div class="controls">
+                <div><i class="fa-solid fa-backward"></i></div>
+                <div id="playBtn" onclick="PlayPause()"><i class="fa-solid fa-play"></i></div>
+                <div><i class="fa-solid fa-forward"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let song = document.getElementById("song");
+        let progress = document.getElementById("progress");
+        let playBtn = document.getElementById("playBtn");
+
+        // Set the progress bar's range once the song's data has loaded
+        function setupProgress() {
+            progress.max = song.duration;
+            progress.value = song.currentTime;
+        }
+        song.onloadeddata = setupProgress;
+        if (song.readyState >= 2) setupProgress(); // in case it loaded before this script ran
+
+        // The pink button only starts or pauses the song
+        function PlayPause() {
+            if (song.paused) {
+                song.play();
+            } else {
+                song.pause();
+            }
+        }
+
+        // Replace the whole icon (not just its class) so Font Awesome redraws it
+        function setIcon(name) {
+            playBtn.innerHTML = '<i class="fa-solid fa-' + name + '"></i>';
+        }
+
+        // The icon follows the real state of the audio,
+        // so it also stays correct when you use the gray player controls
+        song.onplay = function () { setIcon("pause"); };
+        song.onpause = function () { setIcon("play"); };
+
+        // Move the progress bar while the song plays
+        song.ontimeupdate = function () {
+            progress.value = song.currentTime;
+        };
+
+        // Dragging the bar jumps to that point in the song
+        progress.oninput = function () {
+            song.currentTime = progress.value;
+        };
+
+        if (song.pla()) {
+            setInterval(() => {
+                progress.value = song.currentTime;
+            }, 500);
+        }
+
+        progress.onchange = function () {
+            song.play();
+            song.currentTime = progress.value;
+        };
+    </script>
+</body>
+</html>

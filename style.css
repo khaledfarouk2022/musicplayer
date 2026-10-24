@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.music-player{
+
+    background: #ffe0e5;
+    width: 400px;
+    padding: 25px 35px;
+    text-align: center;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+nav .circle{
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    line-height: 40px;
+    box-shadow: 0 5px 10px rgba(255,26,26,0.22);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #f53192;
+}
+
+img{
+    width: 220px;            /* Set explicit width to make it a square */
+    height: 220px;           /* Set matching height */
+    object-fit: cover;       /* Ensures the photo crops nicely inside the circle without stretching */
+    border-radius: 50%;      /* Makes the image a perfect circle */
+    
+    /* Adds the thick white ring border */
+    border: 8px solid #ffffff; 
+    
+    /* Adds the soft glow/drop-shadow around the circle */
+    box-shadow: 0 10px 25px rgba(255, 100, 100, 0.3); 
+    
+    /* Center alignment if needed */
+    display: block;
+    margin: 0 auto 30px auto;
+}
+
+.music-player h1{
+    font-size: 20px;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.music-player p{
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+#progress{
+    width: 100%;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #f53192;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 40
+}
+
+#progress::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px rgba(255,26,26,0.22);
+    cursor: pointer;
+}
+
+.controls{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.controls div{
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    line-height: 40px;
+    box-shadow: 0 5px 10px rgba(255,26,26,0.22);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #f53192;
+}
+
+.controls div:nth-child(2){
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 20px;
+}
